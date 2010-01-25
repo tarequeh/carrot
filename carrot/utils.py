@@ -18,6 +18,11 @@ def gen_unique_id():
         return str(UUID(bytes=buffer.raw))
     return str(uuid4())
 
+def force_str(obj, encoding='utf-8'):
+    if isinstance(obj, basestring):
+        if not isinstance(obj, str):
+            obj = obj.encode(encoding)
+    return obj
 
 def _compat_rl_partition(S, sep, direction=str.split):
     items = direction(S, sep, 1)

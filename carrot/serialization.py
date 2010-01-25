@@ -13,6 +13,7 @@ PyYAML is installed.
 """
 
 import codecs
+from utils import force_str
 
 __all__ = ['SerializerNotInstalled', 'registry']
 
@@ -164,7 +165,7 @@ class SerializerRegistry(object):
         except KeyError:
             return data
 
-        return decoder(data)
+        return decoder(force_str(data))
 
 
 """
